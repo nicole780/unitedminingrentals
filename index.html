@@ -277,12 +277,10 @@
 
   /* ---------- Contact ---------- */
   .contact{background:var(--charcoal); color:#fff;}
-  .contact-inner{max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:56px;}
-  .contact h2{font-size:clamp(26px,3vw,40px); font-weight:800; text-transform:uppercase;}
-  .offices{margin-top:30px; display:grid; gap:24px;}
-  .office .city{font-weight:800; text-transform:uppercase; color:var(--red); font-size:13px; letter-spacing:0.06em;}
-  .office .addr{color:#C9CCD6; font-size:14.5px; margin-top:4px;}
-  .form{display:grid; gap:14px;}
+  .contact-head{max-width:640px; margin:0 auto 40px; text-align:center;}
+  .contact-head h2{font-size:clamp(26px,3vw,40px); font-weight:800; text-transform:uppercase; color:#fff;}
+  .contact-head p{color:#C9CCD6; font-size:16px; margin-top:16px;}
+  .form{display:grid; gap:14px; max-width:600px; margin:0 auto; width:100%;}
   .form input, .form textarea{
     width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.16);
     color:#fff; padding:15px 16px; font-family:inherit; font-size:14.5px;
@@ -449,29 +447,18 @@
 </section>
 
 <section class="contact" id="contact">
-  <div class="contact-inner">
-    <div>
-      <div class="eyebrow">Get in touch</div>
-      <h2 class="display">Two offices, one fleet desk</h2>
-      <div class="offices">
-        <div class="office">
-          <div class="city">Head Office — Ireland</div>
-          <div class="addr">Coolfore Road, Ardbraccan, Navan, Co. Meath, Ireland</div>
-        </div>
-        <div class="office">
-          <div class="city">Fleet &amp; Parts Desk</div>
-          <div class="addr">+353 (0)46 000 0000 &nbsp;·&nbsp; sales@unitedminingrentals.com</div>
-        </div>
-      </div>
-    </div>
-    <form class="form" onsubmit="return false;">
-      <input type="text" placeholder="Your name *">
-      <input type="email" placeholder="Your email *">
-      <input type="text" placeholder="Company">
-      <textarea placeholder="Tell us about your fleet requirements *"></textarea>
-      <button class="btn-arrow" type="submit">Send Enquiry <span class="a">&#8250;</span></button>
-    </form>
+  <div class="contact-head">
+    <div class="eyebrow">Get in touch</div>
+    <h2 class="display">Request a quote</h2>
+    <p>Tell us what you need and our fleet desk will get straight back to you.</p>
   </div>
+  <form class="form" onsubmit="return false;">
+    <input type="text" placeholder="Your name *">
+    <input type="email" placeholder="Your email *">
+    <input type="text" placeholder="Company">
+    <textarea placeholder="Tell us about your fleet requirements *"></textarea>
+    <button class="btn-arrow" type="submit">Send Enquiry <span class="a">&#8250;</span></button>
+  </form>
 </section>
 
 <footer>
