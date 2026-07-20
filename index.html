@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United Mining Rentals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#4423A8;
+    --blue-light:#0A4FC4;
+    --blue-dark:#0039B5;
+    --gradient:linear-gradient(115deg, #4423A8 0%, #0039B5 55%, #0A4FC4 100%);
+    --red:#E5262A;
+    --charcoal:#2E2E2E;
+    --mist:#F3F5F8;
+    --paper:#FFFFFF;
+    --line:#E4E7EE;
+    --ink-soft:#63697A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'Montserrat', sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  .display{
+    font-family:'Montserrat', sans-serif;
+    font-style:italic;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  .subhead{ font-family:'Montserrat', sans-serif; font-weight:600; }
+  .gradient-text{
+    background:var(--gradient);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  /* ---------- brand element: circular swoosh (decorative bg) ---------- */
+  .swoosh-bg{
+    position:absolute;
+    border-radius:50%;
+    border:26px solid transparent;
+    border-top-color:var(--purple);
+    border-right-color:var(--blue-light);
+    opacity:0.08;
+    pointer-events:none;
+  }
+
+  /* ---------- brand element: angled parallelogram accent ---------- */
+  .angle-accent{
+    display:inline-block;
+    width:26px; height:14px;
+    background:var(--gradient);
+    transform:skewX(-20deg);
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    padding:20px 48px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .logo-mark img{
+    height:46px;
+    width:auto;
+    display:block;
+  }
+  nav ul{list-style:none; display:flex; gap:36px;}
+  nav a{
+    color:var(--charcoal);
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    transition:color 0.2s;
+  }
+  nav a:hover{color:var(--blue-light);}
+  .nav-cta{
+    background:var(--gradient);
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    font-weight:700;
+    font-size:13px;
+    cursor:pointer;
+    clip-path:polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:170px 48px 90px;
+    position:relative;
+    background:var(--mist);
+    overflow:hidden;
+  }
+  .hero .swoosh-bg{ width:680px; height:680px; top:-220px; right:-180px; }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    background:#fff;
+    border:1px solid var(--line);
+    padding:9px 18px;
+    width:fit-content;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink-soft);
+    margin-bottom:32px;
+    position:relative;
+  }
+  .hero-eyebrow b{color:var(--red); font-weight:700;}
+  .hero h1{
+    font-size:clamp(42px, 5.6vw, 74px);
+    max-width:980px;
+    color:var(--charcoal);
+    position:relative;
+  }
+  .hero-sub{
+    max-width:560px;
+    font-size:17px;
+    color:var(--ink-soft);
+    margin-top:26px;
+    position:relative;
+  }
+  .hero-ctas{
+    display:flex; gap:16px; margin-top:40px; flex-wrap:wrap;
+    position:relative;
+  }
+  .btn-primary{
+    background:var(--gradient);
+    color:#fff;
+    font-weight:700;
+    padding:16px 34px;
+    border:none;
+    font-size:15px;
+    cursor:pointer;
+    clip-path:polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+    box-shadow:0 14px 26px -10px rgba(68,35,168,0.4);
+  }
+  .btn-secondary{
+    background:transparent;
+    border:1.5px solid #C7CCDA;
+    color:var(--charcoal);
+    padding:16px 30px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .btn-secondary:hover{border-color:var(--blue-light); color:var(--blue-light);}
+
+  .hero-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    margin-top:72px;
+    max-width:900px;
+    position:relative;
+  }
+  .hero-stats div{
+    border-left:3px solid var(--red);
+    padding-left:16px;
+  }
+  .hero-stats .num{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-style:italic;
+    font-size:32px;
+    color:var(--charcoal);
+    line-height:1;
+  }
+  .hero-stats .label{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:6px;
+    font-weight:500;
+  }
+
+  /* ---------- Section shared ---------- */
+  section{padding:120px 48px; position:relative;}
+  .section-head{
+    max-width:700px;
+    margin-bottom:64px;
+  }
+  .eyebrow-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--purple);
+    margin-bottom:20px;
+  }
+  .section-head h2{
+    font-size:clamp(32px,4vw,48px);
+    color:var(--charcoal);
+  }
+  .section-head p{
+    color:var(--ink-soft);
+    margin-top:16px;
+    font-size:16px;
+    max-width:560px;
+  }
+
+  /* ---------- OEM strip ---------- */
+  .oem-strip{
+    background:var(--charcoal);
+    padding:40px 48px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:24px;
+  }
+  .oem-strip .label{
+    font-size:12.5px;
+    font-weight:600;
+    color:#B7BAC2;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .oem-strip .brands{
+    display:flex;
+    gap:48px;
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-style:italic;
+    font-size:22px;
+    color:#fff;
+  }
+
+  /* ---------- Services / icon set (brand icon style) ---------- */
+  .icon-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+    margin-bottom:80px;
+  }
+  .icon-item{
+    text-align:center;
+    padding:28px 14px;
+    border:1px solid var(--line);
+  }
+  .icon-item svg{ width:38px; height:38px; margin-bottom:14px; }
+  .icon-item .label{
+    font-weight:600;
+    font-size:13.5px;
+  }
+
+  /* ---------- About cards ---------- */
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:36px 30px;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:'';
+    position:absolute; top:0; left:0; bottom:0; width:5px;
+    background:var(--gradient);
+  }
+  .card .icon{ margin-bottom:20px; }
+  .card .icon svg{ width:36px; height:36px; }
+  .card h3{
+    font-family:'Montserrat', sans-serif;
+    font-weight:700;
+    font-size:20px;
+    margin-bottom:12px;
+    color:var(--charcoal);
+  }
+  .card p{ color:var(--ink-soft); font-size:15px; }
+
+  /* ---------- Fleet models ---------- */
+  .fleet{background:var(--mist);}
+  .fleet-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+  }
+  .fleet-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:30px;
+    display:flex;
+    gap:20px;
+  }
+  .fleet-card .num{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-style:italic;
+    font-size:26px;
+    color:transparent;
+    -webkit-text-stroke:1.4px var(--purple);
+    flex-shrink:0;
+    min-width:40px;
+  }
+  .fleet-card h3{
+    font-family:'Montserrat', sans-serif;
+    font-weight:700;
+    font-size:18px;
+    margin-bottom:8px;
+    color:var(--charcoal);
+  }
+  .fleet-card p{ color:var(--ink-soft); font-size:14.5px; }
+  .fleet-card .badge-status{
+    display:inline-block;
+    margin-top:12px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--blue-dark);
+    background:rgba(10,79,196,0.08);
+    padding:5px 12px;
+  }
+
+  /* ---------- Photography placeholder strip ---------- */
+  .photo-strip{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:2px;
+    background:var(--charcoal);
+  }
+  .photo-cell{
+    aspect-ratio:4/5;
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff;
+  }
+  .photo-cell svg{ width:34px; height:34px; opacity:0.85; }
+  .photo-cell span{
+    position:absolute; bottom:14px; left:14px; right:14px;
+    font-size:11px; font-weight:600; letter-spacing:0.03em;
+    opacity:0.9;
+  }
+  .photo-note{
+    text-align:center;
+    padding:16px;
+    background:var(--charcoal);
+    color:#9297A3;
+    font-size:12px;
+  }
+
+  /* ---------- Safety strip ---------- */
+  .safety-strip{
+    background:var(--gradient);
+    color:#fff;
+    padding:64px 48px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:30px;
+  }
+  .safety-strip h3{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-style:italic;
+    font-size:30px;
+    max-width:480px;
+  }
+  .safety-strip p{
+    max-width:420px;
+    font-size:15px;
+    opacity:0.92;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+    margin-bottom:56px;
+  }
+  .office{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:32px;
+  }
+  .office .flag{
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--red);
+    margin-bottom:14px;
+  }
+  .office h3{
+    font-family:'Montserrat', sans-serif;
+    font-weight:700;
+    font-size:22px;
+    margin-bottom:14px;
+    color:var(--charcoal);
+  }
+  .office .addr{ color:var(--ink-soft); font-size:15px; margin-bottom:18px; }
+  .office .contact-line{
+    font-size:14px;
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    border-top:1px solid var(--line);
+  }
+  .office .contact-line span:first-child{color:var(--ink-soft);}
+  .office .contact-line span:last-child{font-weight:600;}
+
+  .form-panel{
+    background:var(--mist);
+    padding:40px;
+  }
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  input, textarea{
+    width:100%;
+    background:#fff;
+    border:1px solid var(--line);
+    color:var(--charcoal);
+    padding:14px 16px;
+    font-family:'Montserrat', sans-serif;
+    font-size:14px;
+  }
+  input::placeholder, textarea::placeholder{color:#9BA0AF;}
+  textarea{width:100%; margin-bottom:20px; resize:vertical; min-height:110px;}
+
+  /* ---------- Values ribbon (brand core values) ---------- */
+  .values-ribbon{
+    background:var(--charcoal);
+    color:#fff;
+    padding:26px 48px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .values-ribbon .value{
+    display:flex; align-items:center; gap:8px;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:#D6D8DF;
+  }
+  .values-ribbon svg{ width:16px; height:16px; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:32px 48px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    background:var(--charcoal);
+    border-top:1px solid #3A3A3A;
+  }
+  footer .sister{ font-size:13px; color:#B7BAC2; }
+  footer .sister b{color:#fff;}
+  footer .copy{ font-size:11.5px; color:#7B7F8A; }
+
+  @media (max-width:900px){
+    nav ul{display:none;}
+    .hero-stats{grid-template-columns:repeat(2,1fr); row-gap:24px;}
+    .icon-row{grid-template-columns:repeat(2,1fr);}
+    .cards{grid-template-columns:1fr;}
+    .fleet-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .photo-strip{grid-template-columns:repeat(2,1fr);}
+    .oem-strip{flex-direction:column; align-items:flex-start;}
+    section{padding:80px 24px;}
+    .hero{padding:130px 24px 60px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-mark">
+    <img src="assets/umr-logo.png" alt="United Mining Rentals">
+  </div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#fleet">Rental Models</a></li>
+    <li><a href="#safety">Safety</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">Get a Quote</button>
+</nav>
+
+<section class="hero">
+  <div class="swoosh-bg"></div>
+  <div class="hero-eyebrow">
+    <span class="angle-accent"></span>
+    <b>Irish-founded</b> &nbsp;·&nbsp; Serving mining &amp; tunnelling contractors across Europe &amp; North America
+  </div>
+  <h1 class="display">Equipment you can <span class="gradient-text">depend on.</span></h1>
+  <p class="hero-sub">United Mining Rentals puts new and used Sandvik and Getman underground equipment into your operation — reliable, factory-backed, and rented on terms built around your cash flow.</p>
+  <div class="hero-ctas">
+    <button class="btn-primary">Request a Fleet Quote</button>
+    <button class="btn-secondary">View Rental Models</button>
+  </div>
+  <div class="hero-stats">
+    <div><div class="num">30+</div><div class="label">Years in mining &amp; tunnelling</div></div>
+    <div><div class="num">2</div><div class="label">OEM partners: Sandvik &amp; Getman</div></div>
+    <div><div class="num">4</div><div class="label">Rental &amp; ownership models</div></div>
+    <div><div class="num">24/7</div><div class="label">Technical &amp; parts support</div></div>
+  </div>
+</section>
+
+<div class="oem-strip">
+  <div class="label">Factory-backed OEM partners</div>
+  <div class="brands">
+    <span>SANDVIK</span>
+    <span>GETMAN</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-head">
+    <div class="eyebrow-pill"><span class="angle-accent"></span>What We Handle</div>
+    <h2 class="display">A fleet built for the job in front of you.</h2>
+    <p>Straightforward, dependable equipment coverage — from ground support to haulage — backed by full technical service.</p>
+  </div>
+  <div class="icon-row">
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0A4FC4" stroke-width="1.8"><path d="M3 20h7l3-9 5 2 4-6"/><circle cx="6" cy="20" r="1.4" fill="#0A4FC4" stroke="none"/><path d="M13 11l2-5h5"/></svg>
+      <div class="label">Excavators</div>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0A4FC4" stroke-width="1.8"><rect x="2" y="9" width="11" height="7" rx="1"/><path d="M13 11h5l3 3v2h-3"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
+      <div class="label">Haul Trucks</div>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0A4FC4" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l1 1 1-1 4.3-5.3a4 4 0 0 1 5.4-5.4z"/></svg>
+      <div class="label">Parts &amp; Service</div>
+    </div>
+    <div class="icon-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0A4FC4" stroke-width="1.8"><path d="M12 2l7 4v5c0 5-3.4 7.8-7 9-3.6-1.2-7-4-7-9V6z"/><circle cx="12" cy="10" r="2"/></svg>
+      <div class="label">Safety Compliance</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <div class="eyebrow-pill"><span class="angle-accent"></span>Why United Mining</div>
+    <h2 class="display">Built on three decades underground.</h2>
+    <p>Our OEM partnerships mean your fleet arrives factory-warrantied, fully supported, and matched to the lowest total cost of ownership in the industry.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4423A8" stroke-width="1.8"><path d="M12 3l9 4-9 4-9-4z"/><path d="M6 10v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
+      <h3>Experience</h3>
+      <p>Over three decades in mining and tunnelling has built the close OEM relationships that let us offer the equipment of choice at the lowest possible total cost of ownership.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4423A8" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l1 1 1-1 4.3-5.3a4 4 0 0 1 5.4-5.4z"/></svg></div>
+      <h3>Support</h3>
+      <p>Every unit carries full factory warranty, direct technical support, genuine OEM parts, and a network of local and regional service centres.</p>
+    </div>
+    <div class="card">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4423A8" stroke-width="1.8"><path d="M12 2l7 4v5c0 5-3.4 7.8-7 9-3.6-1.2-7-4-7-9V6z"/><circle cx="12" cy="10" r="2"/></svg></div>
+      <h3>Safety</h3>
+      <p>Nothing matters more to us than the safety and wellbeing of everyone on site. We treat every operation, and everyone in it, with the respect that standard demands.</p>
+    </div>
+  </div>
+</section>
+
+<section class="fleet" id="fleet">
+  <div class="section-head">
+    <div class="eyebrow-pill"><span class="angle-accent"></span>Rental &amp; Ownership</div>
+    <h2 class="display">Four ways to put equipment to work.</h2>
+    <p>Every model is designed for mining companies, tunnelling contractors, and start-up operations that want to defer capital spend until positive cash flow is realised.</p>
+  </div>
+  <div class="fleet-grid">
+    <div class="fleet-card">
+      <div class="num">01</div>
+      <div>
+        <h3>Rent &amp; Return</h3>
+        <p>One or more years, no commitment to purchase. Return the equipment at term end with full flexibility.</p>
+        <span class="badge-status">No commitment</span>
+      </div>
+    </div>
+    <div class="fleet-card">
+      <div class="num">02</div>
+      <div>
+        <h3>Rent &amp; Purchase</h3>
+        <p>Rent with an option to purchase after a minimum one-year term. A percentage of rental payments is deductible from the pre-agreed purchase price.</p>
+        <span class="badge-status">Path to own</span>
+      </div>
+    </div>
+    <div class="fleet-card">
+      <div class="num">03</div>
+      <div>
+        <h3>Rolling Replacement</h3>
+        <p>Return equipment after a 3-year rental and replace with new equipment for another 3-year term, or a pre-agreed period.</p>
+        <span class="badge-status">Fleet refresh</span>
+      </div>
+    </div>
+    <div class="fleet-card">
+      <div class="num">04</div>
+      <div>
+        <h3>Purchase</h3>
+        <p>Bridging units and used equipment for outright sale on an AIWI basis, or a negotiated rental-purchase programme.</p>
+        <span class="badge-status">Outright</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-strip">
+  <div class="photo-cell" style="background:linear-gradient(160deg,#4423A8,#2E2E2E);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M3 20h7l3-9 5 2 4-6"/></svg>
+    <span>Equipment in action</span>
+  </div>
+  <div class="photo-cell" style="background:linear-gradient(160deg,#0039B5,#2E2E2E);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="2" y="9" width="11" height="7" rx="1"/><path d="M13 11h5l3 3v2h-3"/></svg>
+    <span>Haulage fleet</span>
+  </div>
+  <div class="photo-cell" style="background:linear-gradient(160deg,#0A4FC4,#2E2E2E);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 2l7 4v5c0 5-3.4 7.8-7 9-3.6-1.2-7-4-7-9V6z"/></svg>
+    <span>People with PPE</span>
+  </div>
+  <div class="photo-cell" style="background:linear-gradient(160deg,#4423A8,#0039B5);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l1 1 1-1 4.3-5.3a4 4 0 0 1 5.4-5.4z"/></svg>
+    <span>Service &amp; parts</span>
+  </div>
+  <div class="photo-cell" style="background:linear-gradient(160deg,#2E2E2E,#0039B5);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M3 3l18 18M3 21L21 3"/></svg>
+    <span>Site operations</span>
+  </div>
+</div>
+<div class="photo-note">Photography placeholders — replace with real, high-contrast site imagery per brand guidelines (equipment in action, people in PPE)</div>
+
+<div class="safety-strip" id="safety">
+  <h3>Every unit ships with the same standard: bring everyone home.</h3>
+  <p>United Mining treats safety and health as non-negotiable — for our own people and for every operation we supply into.</p>
+</div>
+
+<section id="contact">
+  <div class="section-head">
+    <div class="eyebrow-pill"><span class="angle-accent"></span>Get in Touch</div>
+    <h2 class="display">Two offices, one fleet desk.</h2>
+    <p>Reach the office that covers your operation — or send a message and we'll route it for you.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="office">
+      <div class="flag">Europe</div>
+      <h3>Ireland</h3>
+      <div class="addr">Coolfore Road, Ardbraccan, Navan, Co. Meath, Ireland</div>
+      <div class="contact-line"><span>Phone</span><span>+353 (0)87 149 1945</span></div>
+      <div class="contact-line"><span>Email</span><span>info@unitedminingrentals.com</span></div>
+    </div>
+    <div class="office">
+      <div class="flag">North America</div>
+      <h3>Canada</h3>
+      <div class="addr">Suite 1805, 55 University Avenue, Toronto, Ontario, Canada M5J 2H7</div>
+      <div class="contact-line"><span>Phone</span><span>+353 (0)87 149 1945</span></div>
+      <div class="contact-line"><span>Email</span><span>info@unitedminingrentals.com</span></div>
+    </div>
+  </div>
+
+  <div class="form-panel">
+    <div class="form-row">
+      <input type="text" placeholder="Your name *">
+      <input type="email" placeholder="Your email *">
+    </div>
+    <textarea placeholder="Tell us about your fleet requirements *"></textarea>
+    <button class="btn-primary">Send Message</button>
+  </div>
+</section>
+
+<div class="values-ribbon">
+  <div class="value"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 2l7 4v5c0 5-3.4 7.8-7 9-3.6-1.2-7-4-7-9V6z"/></svg>Reliability</div>
+  <div class="value"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M8 12h.01M11 12h5M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/></svg>Integrity</div>
+  <div class="value"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5c.6.3 1.3.2 1.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Performance</div>
+  <div class="value"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 4h4v4H4zM4 12h4v4H4z"/><circle cx="17" cy="6" r="3"/><path d="M13 17l3-3 3 3"/></svg>Safety</div>
+  <div class="value"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.3 3-6 7-6s7 2.7 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M23 20c0-2.6-2-4.8-5-5.6"/></svg>Partnership</div>
+  <div class="value"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Efficiency</div>
+</div>
+
+<footer>
+  <div class="sister">Sister company: <b>QME Mining &amp; Tunnelling</b></div>
+  <div class="copy">UNITED MINING RENTALS // MOCKUP — NOT FOR PRODUCTION</div>
+</footer>
+
+</body>
+</html>
