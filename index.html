@@ -147,6 +147,17 @@
     border-left:5px solid var(--red);
     padding:44px 44px 40px;
   }
+  .hero-logos{
+    position:absolute; top:40px; right:48px; z-index:3;
+    display:flex; gap:14px; align-items:stretch;
+  }
+  .hero-logo{
+    background:rgba(255,255,255,0.94);
+    border-radius:12px; padding:12px 18px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px -10px rgba(0,0,0,0.45);
+  }
+  .hero-logo img{height:38px; width:auto; display:block;}
   .hero-eyebrow{
     color:#fff; font-size:12.5px; font-weight:700;
     letter-spacing:0.14em; text-transform:uppercase;
@@ -426,6 +437,9 @@
     .topbar{display:none;}
     section, .feature{padding-left:22px; padding-right:22px;}
     header.nav, .hero, .fleet-bar{padding-left:22px; padding-right:22px;}
+    .hero-logos{top:18px; right:18px; gap:8px;}
+    .hero-logo{padding:7px 10px; border-radius:9px;}
+    .hero-logo img{height:24px;}
   }
   @media(max-width:560px){
     .cat-grid{grid-template-columns:1fr;}
@@ -485,6 +499,10 @@
 </div>
 
 <section class="hero" id="top">
+  <div class="hero-logos">
+    <span class="hero-logo"><img src="umr-logo.png" alt="United Mining Rentals"></span>
+    <span class="hero-logo"><img src="siton.webp" alt="Siton"></span>
+  </div>
   <div class="hero-box">
     <h1>Underground Mining Equipment Sales &amp; Rental</h1>
     <p>New Siton machinery plus quality used equipment — reliable, factory-backed, and rented on terms built around your cash flow.</p>
@@ -626,22 +644,6 @@
     </div>
   </div>
 </section>
-
-<div class="oem">
-  <div class="lbl">Factory-backed OEM partner</div>
-  <div class="oem-single">
-    <img src="siton.webp" alt="Siton">
-  </div>
-</div>
-
-<div class="stats">
-  <div class="stats-grid">
-    <div><div class="num">30+</div><div class="label">Years underground</div></div>
-    <div><div class="num">4</div><div class="label">OEM partners</div></div>
-    <div><div class="num">4</div><div class="label">Rental &amp; ownership models</div></div>
-    <div><div class="num">24/7</div><div class="label">Technical &amp; parts support</div></div>
-  </div>
-</div>
 
 <section class="contact" id="contact">
   <div class="contact-head">
