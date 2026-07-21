@@ -394,6 +394,36 @@
     .cat-grid{grid-template-columns:1fr;}
     .models-grid{grid-template-columns:1fr;}
   }
+
+  /* ---------- Animations ---------- */
+  .reveal{
+    opacity:0; transform:translateY(30px);
+    transition:opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1);
+    will-change:opacity, transform;
+  }
+  .reveal.in{opacity:1; transform:none;}
+
+  /* hero entrance on load */
+  @keyframes heroIn{from{opacity:0; transform:translateY(28px);} to{opacity:1; transform:none;}}
+  .hero-box > *{opacity:0; animation:heroIn 0.85s cubic-bezier(.2,.7,.2,1) forwards;}
+  .hero-box > *:nth-child(1){animation-delay:0.15s;}
+  .hero-box > *:nth-child(2){animation-delay:0.32s;}
+  .hero-box > *:nth-child(3){animation-delay:0.49s;}
+  .hero-box > *:nth-child(4){animation-delay:0.66s;}
+
+  /* nav + quote button subtle entrance */
+  @keyframes fadeDown{from{opacity:0; transform:translateY(-10px);} to{opacity:1; transform:none;}}
+  header.nav{animation:fadeDown 0.6s ease both;}
+
+  /* gentle button pulse cue on hero CTA */
+  .btn-arrow{transition:transform 0.2s ease, background 0.2s ease;}
+  .hero-box .btn-arrow:hover{transform:translateY(-2px);}
+
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
+    .hero-box > *{opacity:1 !important; animation:none !important;}
+    header.nav{animation:none !important;}
+  }
 </style>
 </head>
 <body>
@@ -644,6 +674,36 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var groups = ['.section-head','.cat-card','.model-card','.stats-grid > div',
+                '.feature-media','.feature-card','.safety > *',
+                '.contact-head','.contact .form','.oem .lbl','.footer-cols > *'];
+  var all = [];
+  groups.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el, i){
+      el.classList.add('reveal');
+      el.style.transitionDelay = (Math.min(i, 6) * 80) + 'ms';
+      all.push(el);
+    });
+  });
+  if(reduce || !('IntersectionObserver' in window)){
+    all.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+  all.forEach(function(el){ io.observe(el); });
+})();
+</script>
 
 </body>
 </html>
