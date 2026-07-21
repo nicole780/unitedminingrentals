@@ -8,13 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --purple:#4423A8;
-    --blue-light:#0A4FC4;
-    --blue-dark:#0039B5;
-    --gradient:linear-gradient(115deg, #4423A8 0%, #0039B5 55%, #0A4FC4 100%);
-    --gradient-dark:linear-gradient(120deg, #2A1466 0%, #0A1E52 60%, #0A2E7A 100%);
-    --red:#E5262A;
-    --charcoal:#1C1C22;
+    --purple:#16164B;
+    --blue-light:#33A8E0;
+    --blue-dark:#1657A8;
+    --gradient:linear-gradient(115deg, #16164B 0%, #1657A8 55%, #33A8E0 100%);
+    --gradient-dark:linear-gradient(120deg, #10103A 0%, #0F2E6B 60%, #145A9E 100%);
+    --red:#1C9AD6;
+    --charcoal:#17172E;
     --mist:#F3F5F8;
     --paper:#FFFFFF;
     --line:#E4E7EE;
@@ -138,12 +138,12 @@
   }
   .hero::before{
     content:""; position:absolute; inset:0;
-    background:linear-gradient(90deg, rgba(28,20,60,0.92) 0%, rgba(10,30,90,0.72) 45%, rgba(10,46,122,0.30) 100%);
+    background:linear-gradient(90deg, rgba(16,16,55,0.92) 0%, rgba(15,46,110,0.72) 45%, rgba(20,90,158,0.30) 100%);
   }
   .hero-box{
     position:relative; z-index:2;
     max-width:560px;
-    background:rgba(20,16,44,0.78);
+    background:rgba(16,16,55,0.78);
     border-left:5px solid var(--red);
     padding:44px 44px 40px;
   }
@@ -170,7 +170,7 @@
     text-transform:uppercase; padding:17px 26px;
     margin-top:30px; cursor:pointer;
   }
-  .btn-arrow:hover{background:#c81f22;}
+  .btn-arrow:hover{background:#1580b8;}
   .btn-arrow .a{
     width:22px; height:22px; border-radius:50%;
     background:rgba(255,255,255,0.22);
@@ -206,11 +206,11 @@
   .cat-card:hover{transform:translateY(-5px);}
   .cat-card::before{
     content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(20,16,44,0) 38%, rgba(20,16,44,0.88) 100%);
+    background:linear-gradient(180deg, rgba(16,16,55,0) 38%, rgba(16,16,55,0.88) 100%);
     transition:background 0.3s ease;
   }
   .cat-card:hover::before{
-    background:linear-gradient(180deg, rgba(20,16,44,0.10) 0%, rgba(20,16,44,0.94) 72%);
+    background:linear-gradient(180deg, rgba(16,16,55,0.10) 0%, rgba(16,16,55,0.94) 72%);
   }
   .cat-card .info{
     position:absolute; left:0; right:0; bottom:0; z-index:2;
@@ -257,7 +257,7 @@
   /* ---------- Feature / video band ---------- */
   .feature{
     position:relative; padding:120px 48px;
-    background:linear-gradient(rgba(20,16,44,0.82),rgba(10,30,90,0.82)), url('fleet-2.avif') center/cover fixed no-repeat;
+    background:linear-gradient(rgba(16,16,55,0.85),rgba(15,46,110,0.82)), url('fleet-2.avif') center/cover fixed no-repeat;
   }
   .feature-inner{
     max-width:1080px; margin:0 auto;
@@ -343,7 +343,7 @@
   .footer-skyline{display:block; line-height:0;}
   .footer-skyline svg{display:block; width:100%; height:auto;}
   .footer-body{
-    background:linear-gradient(180deg,#2A1466 0%, #0A1E52 55%, #0A2E7A 100%);
+    background:linear-gradient(180deg,#14143C 0%, #0F3A78 55%, #1565A8 100%);
     color:#fff; padding:6px 48px 0;
     margin-top:-1px;
   }
@@ -436,24 +436,10 @@
 <header class="nav">
   <div class="logo-mark"><img src="umr-logo.png" alt="United Mining Rentals"></div>
   <ul class="nav-links">
-    <li><a href="#top">Home</a></li>
-    <li class="has-drop"><a href="#fleet">New Equipment</a>
-      <div class="nav-drop">
-        <a href="#fleet">Sandvik</a>
-        <a href="#fleet">Epiroc</a>
-        <a href="#fleet">Siton</a>
-      </div>
-    </li>
-    <li class="has-drop"><a href="#fleet">Underground Mining Equipment</a>
-      <div class="nav-drop">
-        <a href="#fleet">Rebuilt Equipment</a>
-        <a href="#fleet">Refurbished Equipment</a>
-      </div>
-    </li>
-    <li><a href="#models">Rental</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#safety">Safety</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#fleet">Siton Machinery</a></li>
+    <li><a href="#models">Mining Rentals</a></li>
+    <li><a href="#contact">Contact Us</a></li>
   </ul>
   <button class="btn-quote">Request a Quote</button>
 </header>
@@ -465,15 +451,16 @@
 <section class="hero" id="top">
   <div class="hero-box">
     <h1>Underground Mining Equipment Sales &amp; Rental</h1>
-    <p>New and used Sandvik, Epiroc and Siton underground equipment — reliable, factory-backed, and rented on terms built around your cash flow.</p>
+    <p>New Siton machinery plus quality used equipment — reliable, factory-backed, and rented on terms built around your cash flow.</p>
     <button class="btn-arrow">Rent Mining Equipment <span class="a">&#8250;</span></button>
   </div>
 </section>
 
 <section id="fleet">
   <div class="section-head">
-    <h2 class="display">Equipment built for the job in front of you</h2>
-    <p>From ground support to haulage — new and used underground machines, backed by full technical service and parts support.</p>
+    <div class="eyebrow">Siton Machinery</div>
+    <h2 class="display">New Siton equipment, built for the job in front of you</h2>
+    <p>Our new-equipment range is Siton — a full line of underground machines from loaders and trucks to jumbos and bolters, backed by full technical service and parts support.</p>
   </div>
   <div class="cat-grid">
     <div class="cat-card" style="background-image:url('fleet-1.avif');">
@@ -625,15 +612,15 @@
   <div class="footer-skyline">
     <svg viewBox="0 0 1440 190" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <!-- back ridge -->
-      <path d="M0,190 L0,128 L170,86 L320,124 L480,78 L640,120 L800,74 L960,116 L1120,80 L1280,120 L1440,90 L1440,190 Z" fill="#3A1E8A" opacity="0.55"/>
+      <path d="M0,190 L0,128 L170,86 L320,124 L480,78 L640,120 L800,74 L960,116 L1120,80 L1280,120 L1440,90 L1440,190 Z" fill="#1F4E96" opacity="0.55"/>
       <!-- mine headframe on the tall front peak (~x=620) -->
-      <g fill="#2A1466">
+      <g fill="#14143C">
         <circle cx="620" cy="30" r="7"/>
         <path d="M600,74 L616,34 L624,34 L640,74 L632,74 L620,44 L608,74 Z"/>
         <rect x="617" y="30" width="6" height="46"/>
       </g>
       <!-- front ridge -->
-      <path d="M0,190 L0,96 L120,64 L240,100 L360,54 L480,90 L600,74 L620,40 L660,88 L780,58 L900,98 L1020,50 L1140,90 L1260,64 L1440,94 L1440,190 Z" fill="#2A1466"/>
+      <path d="M0,190 L0,96 L120,64 L240,100 L360,54 L480,90 L600,74 L620,40 L660,88 L780,58 L900,98 L1020,50 L1140,90 L1260,64 L1440,94 L1440,190 Z" fill="#14143C"/>
     </svg>
   </div>
   <div class="footer-body">
