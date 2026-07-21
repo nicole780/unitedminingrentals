@@ -75,6 +75,26 @@
     border-bottom:2px solid transparent;
   }
   .nav-links a:hover{color:var(--blue-light); border-bottom-color:var(--red);}
+  .nav-links li{position:relative;}
+  .nav-links .has-drop > a::after{content:"\25BE"; font-size:9px; margin-left:6px; vertical-align:middle;}
+  .nav-drop{
+    position:absolute; top:100%; left:0; margin-top:14px;
+    min-width:190px; background:#fff;
+    border:1px solid var(--line); border-top:3px solid var(--red);
+    box-shadow:0 18px 36px -14px rgba(10,57,181,0.30);
+    padding:6px 0;
+    opacity:0; visibility:hidden; transform:translateY(6px);
+    transition:opacity 0.18s ease, transform 0.18s ease;
+    z-index:120;
+  }
+  .nav-drop::before{content:""; position:absolute; top:-14px; left:0; right:0; height:14px;}
+  .nav-links .has-drop:hover .nav-drop,
+  .nav-links .has-drop:focus-within .nav-drop{opacity:1; visibility:visible; transform:translateY(0);}
+  .nav-drop a{
+    display:block; padding:10px 22px; border-bottom:0;
+    font-size:12.5px; white-space:nowrap;
+  }
+  .nav-drop a:hover{background:var(--mist); color:var(--blue-light); border-bottom-color:transparent;}
   .btn-quote{
     background:var(--gradient);
     color:#fff;
@@ -369,7 +389,13 @@
   <div class="logo-mark"><img src="umr-logo.png" alt="United Mining Rentals"></div>
   <ul class="nav-links">
     <li><a href="#top">Home</a></li>
-    <li><a href="#fleet">Fleet</a></li>
+    <li class="has-drop"><a href="#fleet">New Equipment</a>
+      <div class="nav-drop">
+        <a href="#fleet">Sandvik</a>
+        <a href="#fleet">Epiroc</a>
+        <a href="#fleet">Siton</a>
+      </div>
+    </li>
     <li><a href="#models">Rental</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#safety">Safety</a></li>
