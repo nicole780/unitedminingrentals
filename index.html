@@ -197,19 +197,37 @@
     gap:24px; max-width:1180px; margin:0 auto;
   }
   .cat-card{
-    background:#fff; border:1px solid var(--line);
-    overflow:hidden; cursor:pointer;
-    transition:transform 0.2s, box-shadow 0.2s;
+    position:relative; overflow:hidden; cursor:pointer;
+    border-radius:12px; aspect-ratio:4/3.4;
+    background-size:cover; background-position:center;
+    box-shadow:0 14px 32px -18px rgba(0,0,0,0.55);
+    transition:transform 0.25s ease;
   }
-  .cat-card:hover{transform:translateY(-4px); box-shadow:0 20px 40px -18px rgba(10,57,181,0.35);}
-  .cat-card .img{height:230px; background-size:cover; background-position:center;}
-  .cat-card .cap{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:20px 22px;
-    font-weight:800; text-transform:uppercase; letter-spacing:0.03em;
-    font-size:15px;
+  .cat-card:hover{transform:translateY(-5px);}
+  .cat-card::before{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,16,44,0) 38%, rgba(20,16,44,0.88) 100%);
+    transition:background 0.3s ease;
   }
-  .cat-card .cap .bar{width:26px; height:3px; background:var(--red);}
+  .cat-card:hover::before{
+    background:linear-gradient(180deg, rgba(20,16,44,0.10) 0%, rgba(20,16,44,0.94) 72%);
+  }
+  .cat-card .info{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    padding:22px 24px; color:#fff;
+  }
+  .cat-card .info h3{font-size:18px; font-weight:800; letter-spacing:0.01em;}
+  .cat-card .info .desc{
+    font-size:13px; color:#D6DBEA; line-height:1.55;
+    max-height:0; opacity:0; overflow:hidden; margin-top:0;
+    transition:max-height 0.35s ease, opacity 0.3s ease, margin-top 0.3s ease;
+  }
+  .cat-card:hover .info .desc{max-height:140px; opacity:1; margin-top:8px;}
+  .cat-card .info .more{
+    display:inline-block; margin-top:12px;
+    font-size:13px; font-weight:700; color:#fff;
+    border-bottom:2px solid var(--red); padding-bottom:2px;
+  }
 
   /* ---------- Rental models ---------- */
   .models{background:var(--mist);}
@@ -424,29 +442,47 @@
     <p>From ground support to haulage — new and used underground machines, backed by full technical service and parts support.</p>
   </div>
   <div class="cat-grid">
-    <div class="cat-card">
-      <div class="img" style="background-image:url('fleet-1.avif');"></div>
-      <div class="cap">Underground Loaders <span class="bar"></span></div>
+    <div class="cat-card" style="background-image:url('fleet-1.avif');">
+      <div class="info">
+        <h3>Underground Loaders</h3>
+        <div class="desc">Low-profile LHD loaders for efficient loading and hauling in tight underground headings.</div>
+        <a href="#contact" class="more">Read more</a>
+      </div>
     </div>
-    <div class="cat-card">
-      <div class="img" style="background-image:url('hero.avif');"></div>
-      <div class="cap">Haul Trucks <span class="bar"></span></div>
+    <div class="cat-card" style="background-image:url('hero.avif');">
+      <div class="info">
+        <h3>Haul Trucks</h3>
+        <div class="desc">Rugged underground haul trucks built for high-volume ore and waste transport.</div>
+        <a href="#contact" class="more">Read more</a>
+      </div>
     </div>
-    <div class="cat-card">
-      <div class="img" style="background-image:url('fleet-2.avif');"></div>
-      <div class="cap">Drilling Jumbos <span class="bar"></span></div>
+    <div class="cat-card" style="background-image:url('fleet-2.avif');">
+      <div class="info">
+        <h3>Drilling Jumbos</h3>
+        <div class="desc">Multi-boom face drilling jumbos for fast, accurate development and production rounds.</div>
+        <a href="#contact" class="more">Read more</a>
+      </div>
     </div>
-    <div class="cat-card">
-      <div class="img" style="background-image:url('fleet-3.avif');"></div>
-      <div class="cap">Compact Loaders <span class="bar"></span></div>
+    <div class="cat-card" style="background-image:url('fleet-3.avif');">
+      <div class="info">
+        <h3>Compact Loaders</h3>
+        <div class="desc">Compact, agile loaders for narrow-vein mining and confined working areas.</div>
+        <a href="#contact" class="more">Read more</a>
+      </div>
     </div>
-    <div class="cat-card">
-      <div class="img" style="background-image:url('fleet-4.jpg');"></div>
-      <div class="cap">Bolting &amp; Support <span class="bar"></span></div>
+    <div class="cat-card" style="background-image:url('fleet-4.jpg');">
+      <div class="info">
+        <h3>Bolting &amp; Support</h3>
+        <div class="desc">Mechanised rock bolting and ground-support rigs for safe, rapid reinforcement.</div>
+        <a href="#contact" class="more">Read more</a>
+      </div>
     </div>
-    <div class="cat-card">
-      <div class="img" style="background-image:url('fleet-5.jpg');"></div>
-      <div class="cap">Concrete Sprayers <span class="bar"></span></div>
+    <div class="cat-card" style="background-image:url('fleet-5.jpg');">
+      <div class="info">
+        <h3>Concrete Sprayers</h3>
+        <div class="desc">Shotcrete sprayers for reliable, high-output tunnel and drift lining.</div>
+        <a href="#contact" class="more">Read more</a>
+      </div>
     </div>
   </div>
 </section>
