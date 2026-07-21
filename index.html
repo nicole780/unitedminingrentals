@@ -247,15 +247,27 @@
   .feature-card h2{font-size:clamp(24px,2.6vw,32px); font-weight:800; text-transform:uppercase;}
   .feature-card p{color:var(--ink-soft); font-size:16px; margin-top:18px;}
 
-  /* ---------- OEM strip ---------- */
-  .oem{background:var(--charcoal); padding:54px 48px; text-align:center;}
-  .oem .lbl{color:#8B90A0; font-size:12.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:26px;}
-  .oem .brands{display:flex; justify-content:center; gap:64px; flex-wrap:wrap;}
-  .oem .brands span{
-    color:#fff; font-weight:800; font-size:26px; letter-spacing:0.06em;
-    opacity:0.9;
+  /* ---------- OEM logo marquee ---------- */
+  .oem{background:#fff; padding:46px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden;}
+  .oem .lbl{color:var(--ink-soft); font-size:12.5px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:32px; text-align:center;}
+  .marquee{
+    overflow:hidden; position:relative;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
   }
-  .oem .brands span:last-child{color:#fff;}
+  .marquee-track{
+    display:flex; width:max-content; align-items:center; gap:88px;
+    animation:marquee 32s linear infinite;
+  }
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  .marquee-track img{
+    height:40px; width:auto; object-fit:contain;
+    opacity:0.85; transition:opacity 0.2s;
+    flex:0 0 auto;
+  }
+  .marquee-track img:hover{opacity:1;}
+  @keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  @media(prefers-reduced-motion:reduce){.marquee-track{animation:none;}}
 
   /* ---------- Stats band ---------- */
   .stats{
@@ -461,10 +473,27 @@
 
 <div class="oem">
   <div class="lbl">Factory-backed OEM partners</div>
-  <div class="brands">
-    <span>SANDVIK</span>
-    <span>GETMAN</span>
-    <span>SITON</span>
+  <div class="marquee">
+    <div class="marquee-track">
+      <img src="sandvik.svg" alt="Sandvik">
+      <img src="getman.png" alt="Getman">
+      <img src="siton.webp" alt="Siton">
+      <img src="sandvik.svg" alt="Sandvik">
+      <img src="getman.png" alt="Getman">
+      <img src="siton.webp" alt="Siton">
+      <img src="sandvik.svg" alt="Sandvik">
+      <img src="getman.png" alt="Getman">
+      <img src="siton.webp" alt="Siton">
+      <img src="sandvik.svg" alt="Sandvik" aria-hidden="true">
+      <img src="getman.png" alt="Getman" aria-hidden="true">
+      <img src="siton.webp" alt="Siton" aria-hidden="true">
+      <img src="sandvik.svg" alt="Sandvik" aria-hidden="true">
+      <img src="getman.png" alt="Getman" aria-hidden="true">
+      <img src="siton.webp" alt="Siton" aria-hidden="true">
+      <img src="sandvik.svg" alt="Sandvik" aria-hidden="true">
+      <img src="getman.png" alt="Getman" aria-hidden="true">
+      <img src="siton.webp" alt="Siton" aria-hidden="true">
+    </div>
   </div>
 </div>
 
