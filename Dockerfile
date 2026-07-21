@@ -4,3 +4,5 @@ COPY index.html /usr/share/caddy/index.html
 COPY *.png /usr/share/caddy/
 COPY *.avif /usr/share/caddy/
 COPY *.jpg /usr/share/caddy/
+COPY *.svg /usr/share/caddy/
+COPY *.webp /usr/share/caddy/
