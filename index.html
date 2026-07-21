@@ -242,29 +242,47 @@
     border-bottom:2px solid var(--red); padding-bottom:2px;
   }
 
-  /* ---------- Rental models ---------- */
+  /* ---------- Rental models (vertical timeline) ---------- */
   .models{background:var(--mist);}
-  .models-grid{
-    display:grid; grid-template-columns:repeat(4,1fr);
-    gap:22px; max-width:1180px; margin:0 auto;
+  .timeline{max-width:940px; margin:0 auto; position:relative;}
+  .timeline::before{
+    content:""; position:absolute; left:50%; top:6px; bottom:6px; width:3px;
+    transform:translateX(-50%);
+    background:linear-gradient(180deg, var(--blue-light), var(--blue-dark));
+    border-radius:3px;
   }
-  .model-card{
-    background:#fff; padding:34px 28px; border-top:4px solid transparent;
-    border-image:var(--gradient); border-image-slice:1;
+  .tl-item{
     position:relative;
+    display:grid; grid-template-columns:1fr 132px 1fr; align-items:center;
+    margin-bottom:38px;
   }
-  .model-card .num{
-    font-weight:800; font-style:italic; font-size:40px;
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-node{
+    grid-column:2; justify-self:center;
+    width:118px; height:118px; border-radius:50%;
+    background-size:cover; background-position:center;
+    border:5px solid #fff; box-shadow:0 12px 28px -10px rgba(22,87,168,0.55);
+    position:relative; z-index:2;
+  }
+  .tl-card{
+    background:#fff; border:1px solid var(--line); border-radius:14px;
+    padding:26px 28px; position:relative;
+    box-shadow:0 16px 34px -20px rgba(0,0,0,0.30);
+  }
+  .tl-item.left .tl-card{grid-column:1; text-align:right; margin-right:26px;}
+  .tl-item.right .tl-card{grid-column:3; text-align:left; margin-left:26px;}
+  .tl-card .num{
+    font-weight:800; font-style:italic; font-size:34px;
     background:var(--gradient); -webkit-background-clip:text; background-clip:text;
-    -webkit-text-fill-color:transparent; line-height:1; margin-bottom:16px;
+    -webkit-text-fill-color:transparent; line-height:1; margin-bottom:10px;
   }
-  .model-card h3{font-size:19px; font-weight:800; text-transform:uppercase; margin-bottom:12px;}
-  .model-card p{color:var(--ink-soft); font-size:14.5px;}
-  .model-card .tag{
-    display:inline-block; margin-top:16px;
+  .tl-card h3{font-size:18px; font-weight:800; text-transform:uppercase; margin-bottom:10px;}
+  .tl-card p{color:var(--ink-soft); font-size:14px;}
+  .tl-card .tag{
+    display:inline-block; margin-top:14px;
     font-size:11px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase;
-    color:var(--blue-dark); background:rgba(10,79,196,0.09);
-    padding:6px 12px;
+    color:var(--blue-dark); background:rgba(22,87,168,0.10);
+    padding:6px 12px; border-radius:4px;
   }
 
   /* ---------- Feature / video band ---------- */
@@ -398,7 +416,10 @@
     .nav-links{display:none;}
     .cat-grid{grid-template-columns:1fr 1fr;}
     .pillars{grid-template-columns:1fr; gap:36px;}
-    .models-grid{grid-template-columns:1fr 1fr;}
+    .timeline::before{left:34px;}
+    .tl-item{grid-template-columns:68px 1fr; margin-bottom:26px;}
+    .tl-node{grid-column:1 !important; width:58px; height:58px; border-width:3px;}
+    .tl-item.left .tl-card, .tl-item.right .tl-card{grid-column:2 !important; text-align:left; margin:0 0 0 18px;}
     .feature-inner, .contact-inner{grid-template-columns:1fr;}
     .footer-cols{grid-template-columns:1fr 1fr; gap:28px;}
     .stats-grid{grid-template-columns:1fr 1fr;}
@@ -408,7 +429,6 @@
   }
   @media(max-width:560px){
     .cat-grid{grid-template-columns:1fr;}
-    .models-grid{grid-template-columns:1fr;}
   }
 
   /* ---------- Animations ---------- */
@@ -555,30 +575,42 @@
     <h2 class="display">Four ways to put equipment to work</h2>
     <p>Flexible rental from a minimum 6-month period. Designed for mining companies, tunnelling contractors, and start-up operations that want to defer capital spend until positive cash flow is realised.</p>
   </div>
-  <div class="models-grid">
-    <div class="model-card">
-      <div class="num">01</div>
-      <h3>Rent &amp; Return</h3>
-      <p>Minimum 6-month rental with flexible terms and no commitment to purchase. Return the equipment at term end.</p>
-      <span class="tag">6-month minimum</span>
+  <div class="timeline">
+    <div class="tl-item left">
+      <div class="tl-card">
+        <div class="num">01</div>
+        <h3>Rent &amp; Return</h3>
+        <p>Minimum 6-month rental with flexible terms and no commitment to purchase. Return the equipment at term end.</p>
+        <span class="tag">6-month minimum</span>
+      </div>
+      <div class="tl-node" style="background-image:url('fleet-1.avif');"></div>
     </div>
-    <div class="model-card">
-      <div class="num">02</div>
-      <h3>Rent &amp; Purchase</h3>
-      <p>Rent with an option to purchase after a minimum 6-month term. A percentage of rental payments is deductible from the purchase price.</p>
-      <span class="tag">Path to own</span>
+    <div class="tl-item right">
+      <div class="tl-node" style="background-image:url('fleet-2.avif');"></div>
+      <div class="tl-card">
+        <div class="num">02</div>
+        <h3>Rent &amp; Purchase</h3>
+        <p>Rent with an option to purchase after a minimum 6-month term. A percentage of rental payments is deductible from the purchase price.</p>
+        <span class="tag">Path to own</span>
+      </div>
     </div>
-    <div class="model-card">
-      <div class="num">03</div>
-      <h3>Rolling Replacement</h3>
-      <p>Return equipment after a 3-year rental and replace with new equipment for another term, or a pre-agreed period.</p>
-      <span class="tag">Fleet refresh</span>
+    <div class="tl-item left">
+      <div class="tl-card">
+        <div class="num">03</div>
+        <h3>Rolling Replacement</h3>
+        <p>Return equipment after a 3-year rental and replace with new equipment for another term, or a pre-agreed period.</p>
+        <span class="tag">Fleet refresh</span>
+      </div>
+      <div class="tl-node" style="background-image:url('fleet-3.avif');"></div>
     </div>
-    <div class="model-card">
-      <div class="num">04</div>
-      <h3>Purchase</h3>
-      <p>Bridging units and used equipment for outright sale on an AIWI basis, or a negotiated rental-purchase programme.</p>
-      <span class="tag">Outright</span>
+    <div class="tl-item right">
+      <div class="tl-node" style="background-image:url('hero.avif');"></div>
+      <div class="tl-card">
+        <div class="num">04</div>
+        <h3>Purchase</h3>
+        <p>Bridging units and used equipment for outright sale on an AIWI basis, or a negotiated rental-purchase programme.</p>
+        <span class="tag">Outright</span>
+      </div>
     </div>
   </div>
 </section>
@@ -683,7 +715,7 @@
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var groups = ['.section-head','.pillar','.cat-card','.model-card','.stats-grid > div',
+  var groups = ['.section-head','.pillar','.cat-card','.tl-item','.stats-grid > div',
                 '.feature-media','.feature-card',
                 '.contact-head','.contact .form','.oem .lbl','.oem-single','.footer-cols > *'];
   var all = [];
