@@ -288,6 +288,8 @@
   /* ---------- OEM logo marquee ---------- */
   .oem{background:#fff; padding:46px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden;}
   .oem .lbl{color:var(--ink-soft); font-size:12.5px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:32px; text-align:center;}
+  .oem-single{display:flex; justify-content:center; align-items:center;}
+  .oem-single img{height:64px; width:auto; object-fit:contain;}
   .marquee{
     overflow:hidden; position:relative;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
@@ -548,33 +550,16 @@
       <span class="play"><span class="tri">&#9658;</span> See us in action</span>
     </div>
     <div class="feature-card">
-      <h2 class="display">An authorised Epiroc service centre</h2>
-      <p>As an authorised Epiroc service centre, we service, rebuild and support your fleet to factory standard. Our OEM partnerships mean equipment arrives factory-warrantied, fully supported, and matched to the lowest total cost of ownership in the industry — whether you're increasing production, reducing capital expenditure or maximising returns.</p>
+      <h2 class="display">Built on decades underground</h2>
+      <p>We service, rebuild and support your fleet to factory standard. New Siton machinery arrives fully warranted and supported, and matched to the lowest total cost of ownership in the industry — whether you're increasing production, reducing capital expenditure or maximising returns.</p>
     </div>
   </div>
 </section>
 
 <div class="oem">
-  <div class="lbl">Factory-backed OEM partners &nbsp;·&nbsp; <span style="color:var(--red);">Authorised Epiroc Service Centre</span></div>
-  <div class="marquee">
-    <div class="marquee-track">
-      <img src="sandvik.svg" alt="Sandvik">
-      <img src="siton.webp" alt="Siton">
-      <img src="epiroc.webp" alt="Epiroc">
-      <img src="ame.png" alt="AME International">
-      <img src="sandvik.svg" alt="Sandvik">
-      <img src="siton.webp" alt="Siton">
-      <img src="epiroc.webp" alt="Epiroc">
-      <img src="ame.png" alt="AME International">
-      <img src="sandvik.svg" alt="Sandvik" aria-hidden="true">
-      <img src="siton.webp" alt="Siton" aria-hidden="true">
-      <img src="epiroc.webp" alt="Epiroc" aria-hidden="true">
-      <img src="ame.png" alt="AME International" aria-hidden="true">
-      <img src="sandvik.svg" alt="Sandvik" aria-hidden="true">
-      <img src="siton.webp" alt="Siton" aria-hidden="true">
-      <img src="epiroc.webp" alt="Epiroc" aria-hidden="true">
-      <img src="ame.png" alt="AME International" aria-hidden="true">
-    </div>
+  <div class="lbl">Factory-backed OEM partner</div>
+  <div class="oem-single">
+    <img src="siton.webp" alt="Siton">
   </div>
 </div>
 
